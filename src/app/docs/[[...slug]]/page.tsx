@@ -1,4 +1,9 @@
+import { notFound } from "next/navigation";
+
 export default function DocsPage({ params }: { params: { slug: string[] } }) {
+  if (parseInt(params?.slug?.[1]) > 10) {
+    notFound();
+  }
   if (params?.slug?.length === 1) {
     return <h2> Viewing Docs {params.slug[0]}</h2>;
   } else if (params?.slug?.length) {
